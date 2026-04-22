@@ -9,33 +9,39 @@ import SwiftUI
 
 struct MatchView: View {
     var body: some View {
-        ScrollView {
-            
-            //MATCH CONTENT
-            VStack(alignment: .leading) {
-                // HEADER TITLE
-                HStack(alignment: .top) {
-                    Text("Match")
-                        .font(Font.largeTitle.bold())
-                    Spacer()
-                }
+        NavigationStack {
+            ScrollView {
                 
-                // CARD CONTENT
-                VStack() {
-                    // ROW CARD 1
-                    HStack() {
-                        //CARD 1
-                        CardComponentMatch()
+                //MATCH CONTENT
+                VStack(alignment: .leading) {
+                    // HEADER TITLE
+                    HStack(alignment: .top) {
+                        Text("Match")
+                            .font(Font.largeTitle.bold())
                         Spacer()
-                        //CARD 2
-                        CardComponentMatch()
                     }
                     
-                    
+                    // CARD CONTENT
+                    VStack() {
+                        // ROW CARD 1
+                        HStack() {
+                            //CARD 1
+                            NavigationLink(destination: DetailView()) {
+                                CardComponentMatch()
+                            }
+                            .buttonStyle(.plain)
+                            Spacer()
+                            //CARD 2
+                            CardComponentMatch()
+                        }
+                        
+                        
+                    }
                 }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 20)
         }
+        .navigationTitle(Text("Match"))
     }
 }
 

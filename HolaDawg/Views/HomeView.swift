@@ -86,7 +86,7 @@ struct HomeView: View {
                 // SCHEDULE CONTENT
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Available Schedule")
-                        .font(.title3)
+                        .font(.title3.bold())
                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
 
                     DatePicker("Available Schedule", selection: $date, displayedComponents: .date)

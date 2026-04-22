@@ -25,6 +25,7 @@ struct ContentView: View {
                     Label("Upcoming", systemImage: "calendar")
                 }
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
