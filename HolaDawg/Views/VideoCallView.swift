@@ -51,18 +51,20 @@ struct VideoCallView: View {
                             .buttonStyle(.glass)
                             .buttonBorderShape(.roundedRectangle)
                             .controlSize(ControlSize.extraLarge)
+                            .buttonSizing(ButtonSizing.flexible)
                             
                             NavigationLink(destination: ContentView()){
-                                Label("end-call", systemImage: "phone.down.fill")
-                                    .font(Font.system(size: 50))
+                                Label("end-call", systemImage: "phone.fill")
+                                    .font(Font.system(size: 30))
                                     .labelStyle(.iconOnly)
                                     .foregroundColor(Color.red)
                             }
                             .buttonStyle(.glass)
                             .buttonBorderShape(.roundedRectangle)
                             .controlSize(ControlSize.extraLarge)
+                            .buttonSizing(ButtonSizing.flexible)
                             
-                            Button("Mic", systemImage: "video.fill") {
+                            Button("Mic", systemImage: "camera.fill") {
                                 
                             }
                             .font(Font.system(size: 30))
@@ -70,6 +72,7 @@ struct VideoCallView: View {
                             .buttonStyle(.glass)
                             .buttonBorderShape(.roundedRectangle)
                             .controlSize(ControlSize.extraLarge)
+                            .buttonSizing(ButtonSizing.flexible)
                         }
                     }
                     .padding(20)

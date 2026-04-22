@@ -11,6 +11,8 @@ struct BookingView: View {
     @State private var date = Date()
     @State private var isSelected = false
     @State private var selectedTime: String? = nil
+    @State private var showingAlert = false
+    @State private var navigateToHome = false
     
     let timeSlots = ["08.00", "09.00", "10.00", "11.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00"]
     
@@ -25,10 +27,10 @@ struct BookingView: View {
             ScrollView(){
                 
                 // BOOKING VIEW CONTENT
-                VStack(alignment: .leading, spacing: 27){
+                VStack(alignment: .leading, spacing: 20){
                     // SCHEDULE CONTENT
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("Date")
+                        Text("Select Date")
                             .font(.title3.bold())
                             .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
 
@@ -40,8 +42,9 @@ struct BookingView: View {
 
                     
                     VStack(alignment: .leading){
-                        Text("Select Date")
+                        Text("Select Time")
                             .font(.title3.bold())
+                            .padding(.bottom, 17)
                             
                         
                         LazyVGrid(columns: columns ){
@@ -63,15 +66,25 @@ struct BookingView: View {
                     .padding(20)
                     .glassEffect(in: .rect(cornerRadius: 20))
                     
-                    NavigationLink("Confirm Booking") {
-                        ContentView()
+                    Button("Book Now"){
+                        showingAlert = true
                     }
                     .buttonStyle(.glassProminent)
+                    .controlSize(ControlSize.extraLarge)
                     .buttonSizing(.flexible)
                 }
             }
             .padding(20)
             .scrollIndicators(.hidden)
+        }
+        .alert("Are you sure to book this appointment?", isPresented: $showingAlert) {
+            Button("Yes") {
+                navigateToHome = true
+            }
+            Button("No", role: .cancel) {}
+        }
+        .navigationDestination(isPresented: $navigateToHome) {
+            ContentView()
         }
     }
 }

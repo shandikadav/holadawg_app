@@ -18,7 +18,7 @@ struct DetailView: View {
                     Image("image-person1")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: .infinity, height: 230)
+                        .frame(height: 230)
                         .clipped()
                         .cornerRadius(20)
                     
@@ -65,6 +65,7 @@ struct DetailView: View {
                     }
                     .buttonStyle(.glassProminent)
                     .buttonSizing(.flexible)
+                    .controlSize(ControlSize.extraLarge)
                 }
                 .padding(20)
                 
