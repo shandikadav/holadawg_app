@@ -12,7 +12,7 @@ struct BookingView: View {
     @State private var isSelected = false
     @State private var selectedTime: String? = nil
     @State private var showingAlert = false
-    @State private var navigateToHome = false
+    @Environment(Router.self) var router
     
     let timeSlots = ["08.00", "09.00", "10.00", "11.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00"]
     
@@ -23,7 +23,6 @@ struct BookingView: View {
     ]
     
     var body: some View {
-        NavigationStack{
             ScrollView(){
                 
                 // BOOKING VIEW CONTENT
@@ -76,19 +75,16 @@ struct BookingView: View {
             }
             .padding(20)
             .scrollIndicators(.hidden)
-        }
-        .alert("Are you sure to book this appointment?", isPresented: $showingAlert) {
-            Button("Yes") {
-                navigateToHome = true
+            .alert("Are you sure to book this appointment?", isPresented: $showingAlert) {
+                Button("Yes") {
+                    router.popToRoot()
+                }
+                Button("No", role: .cancel) {}
             }
-            Button("No", role: .cancel) {}
-        }
-        .navigationDestination(isPresented: $navigateToHome) {
-            ContentView()
-        }
     }
 }
 
 #Preview {
     BookingView()
+        .environment(Router())
 }

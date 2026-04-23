@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MatchView: View {
+    let profiles = MockData.profiles
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
-        NavigationStack {
             ScrollView {
                 
                 //MATCH CONTENT
@@ -22,26 +24,17 @@ struct MatchView: View {
                     }
                     
                     // CARD CONTENT
-                    VStack() {
-                        // ROW CARD 1
-                        HStack() {
-                            //CARD 1
-                            NavigationLink(destination: DetailView()) {
-                                CardComponentMatch()
+                    LazyVGrid(columns: columns, spacing: 15) {
+                        ForEach(profiles) { profile in
+                            NavigationLink(value: profile) {
+                                CardComponentMatch(profile: profile)
                             }
                             .buttonStyle(.plain)
-                            Spacer()
-                            //CARD 2
-                            CardComponentMatch()
                         }
-                        
-                        
                     }
                 }
                 .padding(.horizontal, 20)
             }
-        }
-        .navigationTitle(Text("Match"))
     }
 }
 

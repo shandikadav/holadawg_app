@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct CardComponentMatch: View {
+    let profile: Profile;
+    
     var body: some View {
         ZStack(alignment: .leading) {
-            Image("image-person1")
+            Image(profile.imageName)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .scaledToFill()
+                .frame(width: 170, height: 170)
+                .clipped()
             
             // CARD INSIDE CONTENT
             VStack(alignment: .leading) {
                 Spacer()
                 HStack() {
                     VStack(alignment: .leading){
-                        Text("Kurabayashi")
+                        Text(profile.name)
                             .font(Font.subheadline.weight(.semibold))
                             .padding(.bottom, 2)
-                        Text("🇯🇵 Native")
+                        Text(profile.tags[0])
                             .font(Font.caption2)
                             .foregroundColor(Color.gray)
                     }
@@ -36,7 +40,7 @@ struct CardComponentMatch: View {
                 .glassEffect(in: .rect(cornerRadius: 12))
                 .padding(8)
             }
-            .padding(.vertical, 20)
+//            .padding(.vertical, 20)
             
                 
         }
@@ -92,5 +96,4 @@ struct CardComponentUpcoming: View {
 }
 
 #Preview {
-    CardComponentMatch()
 }
