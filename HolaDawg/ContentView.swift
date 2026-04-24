@@ -36,10 +36,17 @@ struct ContentView: View {
             .tabItem {
                 Label("Match", systemImage: "link")
             }
-            UpcomingView()
-                .tabItem {
-                    Label("Upcoming", systemImage: "calendar")
-                }
+            NavigationStack(path: $router.upcomingPath){
+                UpcomingView()
+                    .navigationDestination(for: String.self) { value in
+                        if value == "Videocall" {
+                            VideoCallView()
+                        }
+                    }
+            }
+            .tabItem {
+                Label("Upcoming", systemImage: "calendar")
+            }
         }
         .toolbar(.hidden, for: .navigationBar)
         .environment(router)

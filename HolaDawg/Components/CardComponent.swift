@@ -33,21 +33,21 @@ struct CardComponentMatch: View {
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
                     Spacer()
                     Label("Chevron Right", systemImage: "chevron.right")
-                    .labelStyle(IconOnlyLabelStyle())
-                    .padding(.trailing, 8)
-                    .foregroundColor(Color.primary)
+                        .labelStyle(IconOnlyLabelStyle())
+                        .padding(.trailing, 8)
+                        .foregroundColor(Color.primary)
                 }
                 .glassEffect(in: .rect(cornerRadius: 12))
                 .padding(8)
             }
-//            .padding(.vertical, 20)
+            //            .padding(.vertical, 20)
             
-                
+            
         }
         .frame(width: 170, height: 170)
         .clipped()
         .cornerRadius(20)
-
+        
     }
 }
 
@@ -55,43 +55,40 @@ struct CardComponentUpcoming: View {
     let name: String;
     
     var body: some View {
-        NavigationStack {
-            HStack(alignment: .center) {
-                Image("image-person1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 95, height: 112)
-                    .clipped()
-                    .cornerRadius(12)
-                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 6))
-                
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(name)
-                        .font(.title3.bold())
-                        .foregroundStyle(Color.primary)
-                    HStack(alignment: .top, spacing: 8) {
-                        Text("🇯🇵 Native")
-                            .font(Font.caption)
-                        Text("🇯🇵 JLPT N1")
-                            .font(Font.caption)
-                    }
-                    Label("Today • 16.00", systemImage: "clock")
-                        .font(Font.subheadline)
+        HStack(alignment: .center) {
+            Image("image-person1")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 95, height: 112)
+                .clipped()
+                .cornerRadius(12)
+                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 6))
+            
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(name)
+                    .font(.title3.bold())
+                    .foregroundStyle(Color.primary)
+                HStack(alignment: .top, spacing: 8) {
+                    Text("🇯🇵 Native")
+                        .font(Font.caption)
+                    Text("🇯🇵 JLPT N1")
+                        .font(Font.caption)
                 }
-                
-                Spacer()
-                
-                NavigationLink(destination: VideoCallView()) {
-                    Text("Join")
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(.trailing, 16)
-//                .disabled(buttonDisabled)
+                Label("Today • 16.00", systemImage: "clock")
+                    .font(Font.subheadline)
             }
-            .glassEffect(in: .rect(cornerRadius: 12))
-
+            
+            Spacer()
+            
+            NavigationLink(destination: VideoCallView()) {
+                Text("Join")
+            }
+            .buttonStyle(.borderedProminent)
+            .padding(.trailing, 16)
+            //                .disabled(buttonDisabled)
         }
+        .glassEffect(in: .rect(cornerRadius: 12))
     }
 }
 
